@@ -1,0 +1,10 @@
+Wiring
+
+MCP2515 --> Arduino UNO
+VCC1(red) --> 5V
+GND(black) --> GND
+CS(orange) --> 10
+SO(yellow) --> 12
+SI(blue) --> 11
+SCK(white) --> 13
+INT(grey) --> 2
