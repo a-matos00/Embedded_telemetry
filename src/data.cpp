@@ -1,5 +1,7 @@
 #include<data.h>
 
+Data::Data(){}
+
 Data::Data(uint8_t index, uint8_t size, uint8_t factor, uint8_t offset)
 {
     this->m_index = index;

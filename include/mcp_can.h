@@ -106,6 +106,7 @@ class MCP_CAN
     INT8U sendMsg();                                                    // Send message
 
 public:
+    MCP_CAN();
     MCP_CAN(INT8U _CS);
     INT8U begin(INT8U idmodeset, INT8U speedset, INT8U clockset);       // Initialize controller parameters
     INT8U init_Mask(INT8U num, INT8U ext, INT32U ulData);               // Initialize Mask(s)
