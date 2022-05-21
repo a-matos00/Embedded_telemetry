@@ -1,7 +1,7 @@
 #include "canHandler.h"
 
 canHandler::canHandler(uint8_t INT_pin, uint8_t CS_pin){
-  rpm = new Data(0,2,1,1);
+  rpm = new Data(0,2,1,0);
   CAN_DEVICE = new MCP_CAN(CS_pin);
   m_INT_pin = INT_pin;
 }
@@ -38,7 +38,7 @@ void canHandler::displayRxMessage(){
 
 void canHandler::initCANDevice(){
   // Initialize MCP2515 running at 16MHz with a baudrate of 500kb/s and the masks and filters disabled.
-  if(CAN_DEVICE->begin(MCP_ANY, CAN_500KBPS, MCP_16MHZ) == CAN_OK)
+  if(CAN_DEVICE->begin(MCP_ANY, CAN_500KBPS, MCP_8MHZ) == CAN_OK)
     Serial.println("MCP2515 Initialized Successfully!");
   else
     Serial.println("Error Initializing MCP2515...");
