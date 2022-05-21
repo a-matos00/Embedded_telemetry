@@ -11,8 +11,9 @@ class Data{
        uint8_t m_size = 0;
        uint8_t m_factor = 0;
        uint8_t m_offset = 0;
+       String m_name;
 
     Data();
-       Data(uint8_t index, uint8_t size, uint8_t factor, uint8_t offset);
+       Data(String name, uint8_t index, uint8_t size, uint8_t factor, uint8_t offset);
        void getValue(unsigned char*);
 };

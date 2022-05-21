@@ -2,12 +2,13 @@
 
 Data::Data(){}
 
-Data::Data(uint8_t index, uint8_t size, uint8_t factor, uint8_t offset)
+Data::Data(String name, uint8_t index, uint8_t size, uint8_t factor, uint8_t offset)
 {
     this->m_index = index;
     this->m_size = size;
     this->m_factor = factor;
     this->m_offset = offset;
+    this->m_name = name;
 }
 void Data::getValue(unsigned char* data)
 {

@@ -14,7 +14,10 @@ public:
 
 MCP_CAN* CAN_DEVICE;
 uint8_t m_INT_pin;
-Data* rpm;
+Data* batteryVoltage;
+Data* waterTemp;
+Data* vehicleSpeed;
+Data* selectedGear;
 long unsigned int message_id;
 unsigned char DLC;
 unsigned char rxBuf[8];
