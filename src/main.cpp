@@ -4,42 +4,45 @@
 
 canHandler can0(2,10);  //set INT and CS pin
 wirelessDevice lteModule;
+
 void setup()
 {
   lteModule.virtualSerial->begin(115200); //Initialize virtual serial port
   Serial.begin(115200); //Initialize Arduino default serial port
   lteModule.connectCellularDevice();
-  //can0.initCANDevice();
+  can0.initCANDevice();
 }
 
 long recieveTimer = 0; 
 long rapidTransmitTimer = 0;
 long slowTransmitTimer = 0;
 long intervalRecieve = 10;
-long intervalRapid = 60; 
-long intervalSlow = 3400;
+long intervalRapid = 30; 
+long intervalSlow = 3455;
 long now = 0;
 
 bool logic = true;
 void loop()
 {
-  /*
+  
   now = millis();
-  if(now > intervalRecieve){
+  if(now > recieveTimer){
     recieveTimer = now + intervalRecieve;
     can0.recieveMessages();   
   }
 
-  if(now > intervalRapid){
+  if(now > rapidTransmitTimer){
     rapidTransmitTimer = now + intervalRapid;
-    lteModule.publishData(can0.vehicleSpeed->m_value, can0.selectedGear->m_value);
+    lteModule.publishData(can0.vehicleSpeed->m_name, can0.vehicleSpeed->m_value, can0.selectedGear->m_name, can0.selectedGear->m_value);
   }
-  if(now > intervalSlow){
+  if(now > slowTransmitTimer){
     slowTransmitTimer = now + intervalSlow;
-    lteModule.publishData(can0.batteryVoltage->m_value, can0.waterTemp->m_value);
+    lteModule.publishData(can0.batteryVoltage->m_name, can0.batteryVoltage->m_value,can0.waterTemp->m_name, can0.waterTemp->m_value);
+    
   }
-  */
+  
 
+/*
   now = millis();
 
   if(now > recieveTimer){
@@ -65,13 +68,11 @@ void loop()
   if(now > rapidTransmitTimer){
     rapidTransmitTimer = now + intervalRapid;
     lteModule.publishData(can0.vehicleSpeed->m_name, can0.vehicleSpeed->m_value, can0.selectedGear->m_name, can0.selectedGear->m_value);
-    Serial.println(can0.vehicleSpeed->m_name);
   }
   if(now > slowTransmitTimer){
     slowTransmitTimer = now + intervalSlow;
     lteModule.publishData(can0.batteryVoltage->m_name, can0.batteryVoltage->m_value,can0.waterTemp->m_name, can0.waterTemp->m_value);
-    Serial.println(can0.batteryVoltage->m_name);
-    Serial.println(now);
   }
+  */
 }
 

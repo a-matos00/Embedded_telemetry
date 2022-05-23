@@ -24,24 +24,24 @@ void wirelessDevice::connectCellularDevice(){
 
 void wirelessDevice::publishData(String topic1, int value1, String topic2, int value2){
   virtualSerial->println("AT+CMQTTTOPIC=0,3"); 
-  delay(50);
+  delay(10);
   virtualSerial->println(topic1);
-  delay(50);
+  delay(10);
   virtualSerial->println("AT+CMQTTPAYLOAD=0,3");
-  delay(50);
+  delay(10);
   virtualSerial->println(String(value1));
-  delay(50);
+  delay(10);
   virtualSerial->println("AT+CMQTTPUB=0,1,60");
   delay(100);
 
   virtualSerial->println("AT+CMQTTTOPIC=0,3"); 
-  delay(50);
+  delay(10);
   virtualSerial->println(topic2);
-  delay(50);
+  delay(10);
   virtualSerial->println("AT+CMQTTPAYLOAD=0,3");
-  delay(50);
+  delay(10);
   virtualSerial->println(String(value2));
-  delay(50);
+  delay(10);
   virtualSerial->println("AT+CMQTTPUB=0,1,60");
   delay(100);
 
