@@ -12,14 +12,14 @@ public:
     void recieveMessages();
     void readData(long unsigned int, unsigned char*);
 
-MCP_CAN* CAN_DEVICE;
-uint8_t m_INT_pin;
-Data* batteryVoltage;
-Data* waterTemp;
-Data* vehicleSpeed;
-Data* selectedGear;
-long unsigned int message_id;
-unsigned char DLC;
-unsigned char rxBuf[8];
-char msgString[128];
+    MCP_CAN* CAN_DEVICE;
+    uint8_t m_INT_pin;
+    Data* batteryVoltage;
+    Data* waterTemp;
+    Data* vehicleSpeed;
+    Data* selectedGear;
+    long unsigned int message_id;
+    unsigned char DLC;
+    unsigned char rxBuf[8];
+    char msgString[128];
 };

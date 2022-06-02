@@ -16,12 +16,11 @@ void setup()
 long recieveTimer = 0; 
 long rapidTransmitTimer = 0;
 long slowTransmitTimer = 0;
-long intervalRecieve = 10;
-long intervalRapid = 30; 
+long intervalRecieve = 20;
+long intervalRapid = 70; 
 long intervalSlow = 3455;
 long now = 0;
 
-bool logic = true;
 void loop()
 {
   
@@ -33,12 +32,13 @@ void loop()
 
   if(now > rapidTransmitTimer){
     rapidTransmitTimer = now + intervalRapid;
-    lteModule.publishData(can0.vehicleSpeed->m_name, can0.vehicleSpeed->m_value, can0.selectedGear->m_name, can0.selectedGear->m_value);
+    lteModule.publishData(can0.vehicleSpeed->m_name, can0.vehicleSpeed->m_value);
+    lteModule.publishData(can0.selectedGear->m_name, can0.selectedGear->m_value);
   }
   if(now > slowTransmitTimer){
     slowTransmitTimer = now + intervalSlow;
-    lteModule.publishData(can0.batteryVoltage->m_name, can0.batteryVoltage->m_value,can0.waterTemp->m_name, can0.waterTemp->m_value);
-    
+    lteModule.publishData(can0.batteryVoltage->m_name, can0.batteryVoltage->m_value);
+    lteModule.publishData(can0.waterTemp->m_name, can0.waterTemp->m_value); 
   }
   
 
@@ -47,7 +47,7 @@ void loop()
 
   if(now > recieveTimer){
     recieveTimer = now + intervalRecieve;
-    Serial.println("read");
+    
     if(logic == true){
       can0.vehicleSpeed->m_value = 50;
       can0.batteryVoltage->m_value = 12;
@@ -67,11 +67,13 @@ void loop()
 
   if(now > rapidTransmitTimer){
     rapidTransmitTimer = now + intervalRapid;
-    lteModule.publishData(can0.vehicleSpeed->m_name, can0.vehicleSpeed->m_value, can0.selectedGear->m_name, can0.selectedGear->m_value);
+    lteModule.publishData(can0.vehicleSpeed->m_name, can0.vehicleSpeed->m_value);
+    lteModule.publishData(can0.selectedGear->m_name, can0.selectedGear->m_value);
   }
   if(now > slowTransmitTimer){
     slowTransmitTimer = now + intervalSlow;
-    lteModule.publishData(can0.batteryVoltage->m_name, can0.batteryVoltage->m_value,can0.waterTemp->m_name, can0.waterTemp->m_value);
+    lteModule.publishData(can0.batteryVoltage->m_name, can0.batteryVoltage->m_value);
+    lteModule.publishData(can0.waterTemp->m_name, can0.waterTemp->m_value);
   }
   */
 }

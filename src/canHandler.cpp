@@ -11,12 +11,12 @@ canHandler::canHandler(uint8_t INT_pin, uint8_t CS_pin){
 
 void canHandler::recieveMessages(){
       
-    if(!digitalRead(m_INT_pin))                         // If CAN_DEVICE_INT pin is low, read receive buffer
-    {
-        CAN_DEVICE->readMsgBuf(&message_id, &DLC, rxBuf);      // Read data: DLC = data length, buf = data byte(s)
-        displayRxMessage(); //display recieved message in serial monitor
-        readData(message_id, rxBuf);  //Get data values from CAN message
-    }
+  if(!digitalRead(m_INT_pin))
+  {
+    CAN_DEVICE->readMsgBuf(&message_id, &DLC, rxBuf);  
+    displayRxMessage();
+    readData(message_id, rxBuf);
+  }
 }
 
 void canHandler::readData(unsigned long int id, unsigned char* data){

@@ -7,6 +7,6 @@ class wirelessDevice{
 
     wirelessDevice();
     void connectCellularDevice();
-    void publishData(String topic1, int value1, String topic2, int value2);
+    void publishData(String topic1, int value1);
     void connectToBroker(); 
 };

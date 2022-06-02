@@ -5,13 +5,11 @@ wirelessDevice::wirelessDevice(){
 }
 void wirelessDevice::connectToBroker(){
 
-virtualSerial->println("ATE0");
-  delay(200);
-  virtualSerial->println("AT+CMQTTSTART"); //Establishing MQTT Connection
+  virtualSerial->println("AT+CMQTTSTART"); 
   delay(200); 
-  virtualSerial->println("AT+CMQTTACCQ=0,\"andrija\",1"); //Client ID - change this for each client as this need to be unique
+  virtualSerial->println("AT+CMQTTACCQ=0,\"andrija\",0"); 
   delay(200);
-  virtualSerial->println("AT+CMQTTCONNECT=0,\"tcp://test.mosquitto.org:8883\",90,1"); //MQTT Server Name for connecting this client
+  virtualSerial->println("AT+CMQTTCONNECT=0,\"tcp://116.203.35.126:1883\",90,1");
   delay(200);
 }
 
@@ -22,27 +20,15 @@ void wirelessDevice::connectCellularDevice(){
   digitalWrite(12, LOW);
 }
 
-void wirelessDevice::publishData(String topic1, int value1, String topic2, int value2){
-  virtualSerial->println("AT+CMQTTTOPIC=0,3"); 
-  delay(10);
-  virtualSerial->println(topic1);
-  delay(10);
-  virtualSerial->println("AT+CMQTTPAYLOAD=0,3");
-  delay(10);
-  virtualSerial->println(String(value1));
-  delay(10);
+void wirelessDevice::publishData(String topic1, int value1){
+  virtualSerial->println("AT+CMQTTTOPIC=0,8"); 
+  delay(5);
+  virtualSerial->println("frt/data");
+  delay(5);
+  virtualSerial->println("AT+CMQTTPAYLOAD=0,16");
+  delay(5);
+  virtualSerial->println(String("2222222222222222"));
+  delay(5);
   virtualSerial->println("AT+CMQTTPUB=0,1,60");
   delay(100);
-
-  virtualSerial->println("AT+CMQTTTOPIC=0,3"); 
-  delay(10);
-  virtualSerial->println(topic2);
-  delay(10);
-  virtualSerial->println("AT+CMQTTPAYLOAD=0,3");
-  delay(10);
-  virtualSerial->println(String(value2));
-  delay(10);
-  virtualSerial->println("AT+CMQTTPUB=0,1,60");
-  delay(100);
-
 }
